@@ -1,0 +1,87 @@
+{
+    "experiment_target": {
+        "text": "messenger RNA", 
+        "term": "CHEBI:33699"
+    }, 
+    "library_construction": {
+        "value": "10X v3"
+    }, 
+    "end_bias": {
+        "value": "3 prime tag"
+    }, 
+    "library_strand": {
+        "value": "second (sense)"
+    }, 
+    "library_generation_protocol": {
+        "value": "https://support.10xgenomics.com/single-cell-gene-expression/library-prep/doc/user-guide-chromium-single-cell-3-reagent-kits-user-guide-v3-chemistry"
+    }, 
+    "sequencing_protocol": {
+        "value": "https://support.10xgenomics.com/single-cell-gene-expression/library-prep/doc/user-guide-chromium-single-cell-3-reagent-kits-user-guide-v3-chemistry"
+    }, 
+    "read_strand": {
+        "value": "mate 2 sense"
+    }, 
+    "experiments_core": {
+        "project": {
+            "value": "FAANG"
+        }, 
+        "assay_type": {
+            "value": "transcription profiling by high throughput sequencing"
+        }, 
+        "sample_storage": {
+            "value": "frozen, -70 freezer"
+        }, 
+        "sample_storage_processing": {
+            "value": "fresh"
+        }, 
+        "sampling_to_preparation_interval": {
+            "value": 1.0, 
+            "units": "weeks"
+        }, 
+        "experimental_protocol": {
+            "value": "https://support.10xgenomics.com/single-cell-gene-expression/library-prep/doc/user-guide-chromium-single-cell-3-reagent-kits-user-guide-v3-chemistry"
+        }, 
+        "extraction_protocol": {
+            "value": "https://support.10xgenomics.com/single-cell-gene-expression/library-prep/doc/user-guide-chromium-single-cell-3-reagent-kits-user-guide-v3-chemistry"
+        }, 
+        "library_preparation_location": {
+            "value": "DNA facility, Iowa State University"
+        }, 
+        "library_preparation_location_longitude": {
+            "value": "not applicable", 
+            "units": "not applicable"
+        }, 
+        "library_preparation_location_latitude": {
+            "value": "not applicable", 
+            "units": "not applicable"
+        }, 
+        "library_preparation_date": {
+            "value": "not applicable", 
+            "units": "not applicable"
+        }, 
+        "sequencing_location": {
+            "value": "not applicable"
+        }, 
+        "sequencing_location_longitude": {
+            "value": "not applicable", 
+            "units": "not applicable"
+        }, 
+        "sequencing_location_latitude": {
+            "value": "not applicable", 
+            "units": "not applicable"
+        }, 
+        "sequencing_date": {
+            "value": "not applicable", 
+            "units": "not applicable"
+        }
+    }, 
+    "custom": {
+        "sample_descriptor": {
+            "value": "SAMEA8050979"
+        }, 
+        "experiment_alias": {
+            "value": "Pig_Immune_Cells_RNA_FAANG_scRNA_PBMBCs_C3"
+        }
+    }, 
+    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/experiments/faang_experiments_scrna-seq.metadata_rules.json"
+}

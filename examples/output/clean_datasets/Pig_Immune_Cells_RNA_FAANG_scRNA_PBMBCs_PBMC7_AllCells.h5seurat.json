@@ -1,0 +1,30 @@
+{
+    "alias": {
+        "value": "Pig_Immune_Cells_RNA_FAANG_scRNA_PBMBCs"
+    }, 
+    "project": {
+        "value": "FAANG"
+    }, 
+    "analysis_protocol_name": {
+        "value": "PBMC_All Cells_H5 Seurat_scRNAseq"
+    }, 
+    "analysis_protocol_description": {
+        "value": "https://data.nal.usda.gov/dataset/data-reference-transcriptomics-porcine-peripheral-immune-cells-created-through-bulk-and-single-cell-rna-sequencing"
+    }, 
+    "analysis_protocol_type": {
+        "value": "processed matrix generation"
+    }, 
+    "computational_method": {
+        "value": "Seurat"
+    }, 
+    "analysis_file_name": {
+        "value": "PBMC7_AllCells.h5seurat"
+    }, 
+    "analysis_file_format": {
+        "value": "h5seurat"
+    }, 
+    "analysis_file_description": {
+        "value": "Gene expression profile"
+    }, 
+    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/analyses/faang_analyses_faang_hca.metadata_rules.json"
+}

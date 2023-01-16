@@ -1,0 +1,30 @@
+{
+    "alias": {
+        "value": "Pig_Immune_Cells_RNA_FAANG_scRNA_PBMBCs"
+    }, 
+    "project": {
+        "value": "FAANG"
+    }, 
+    "analysis_protocol_name": {
+        "value": "PBMC_All Cells_10X format_scRNAseq"
+    }, 
+    "analysis_protocol_description": {
+        "value": "https://data.nal.usda.gov/dataset/data-reference-transcriptomics-porcine-peripheral-immune-cells-created-through-bulk-and-single-cell-rna-sequencing"
+    }, 
+    "analysis_protocol_type": {
+        "value": "raw matrix generation"
+    }, 
+    "computational_method": {
+        "value": "cell ranger"
+    }, 
+    "analysis_file_name": {
+        "value": "barcodes.tsv.gz"
+    }, 
+    "analysis_file_format": {
+        "value": "tsv.gz"
+    }, 
+    "analysis_file_description": {
+        "value": "Molecular property identifier"
+    }, 
+    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/analyses/faang_analyses_faang_hca.metadata_rules.json"
+}

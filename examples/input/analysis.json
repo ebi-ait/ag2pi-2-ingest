@@ -1,0 +1,144 @@
+{
+	"faang_hca": [
+		{
+			"alias": {
+				"value": "Pig_Immune_Cells_RNA_FAANG_scRNA_PBMBCs"
+			},
+			"project": {
+				"value": "FAANG"
+			},
+			"secondary_project": {
+				"value": null
+			},
+			"analysis_protocol_name": {
+				"value": "PBMC_All Cells_10X format_scRNAseq"
+			},
+			"analysis_protocol_description": {
+				"value": "https://data.nal.usda.gov/dataset/data-reference-transcriptomics-porcine-peripheral-immune-cells-created-through-bulk-and-single-cell-rna-sequencing"
+			},
+			"analysis_protocol_type": {
+				"value": "raw matrix generation"
+			},
+			"computational_method": {
+				"value": "CellRanger v4.0.0"
+			},
+			"computation_method_version": {
+				"value": null
+			},
+			"analysis_file_name": {
+				"value": "matrix.mtx.gz"
+			},
+			"analysis_file_format": {
+				"value": "mtx.gz"
+			},
+			"analysis_file_description": {
+				"value": "Gene expression matrix"
+			}
+		},
+		{
+			"alias": {
+				"value": "Pig_Immune_Cells_RNA_FAANG_scRNA_PBMBCs"
+			},
+			"project": {
+				"value": "FAANG"
+			},
+			"secondary_project": {
+				"value": null
+			},
+			"analysis_protocol_name": {
+				"value": "PBMC_All Cells_10X format_scRNAseq"
+			},
+			"analysis_protocol_description": {
+				"value": "https://data.nal.usda.gov/dataset/data-reference-transcriptomics-porcine-peripheral-immune-cells-created-through-bulk-and-single-cell-rna-sequencing"
+			},
+			"analysis_protocol_type": {
+				"value": "raw matrix generation"
+			},
+			"computational_method": {
+				"value": "CellRanger v4.0.0"
+			},
+			"computation_method_version": {
+				"value": null
+			},
+			"analysis_file_name": {
+				"value": "features.tsv.gz"
+			},
+			"analysis_file_format": {
+				"value": "tsv.gz"
+			},
+			"analysis_file_description": {
+				"value": "Feature table"
+			}
+		},
+		{
+			"alias": {
+				"value": "Pig_Immune_Cells_RNA_FAANG_scRNA_PBMBCs"
+			},
+			"project": {
+				"value": "FAANG"
+			},
+			"secondary_project": {
+				"value": null
+			},
+			"analysis_protocol_name": {
+				"value": "PBMC_All Cells_10X format_scRNAseq"
+			},
+			"analysis_protocol_description": {
+				"value": "https://data.nal.usda.gov/dataset/data-reference-transcriptomics-porcine-peripheral-immune-cells-created-through-bulk-and-single-cell-rna-sequencing"
+			},
+			"analysis_protocol_type": {
+				"value": "raw matrix generation"
+			},
+			"computational_method": {
+				"value": "CellRanger v4.0.0"
+			},
+			"computation_method_version": {
+				"value": null
+			},
+			"analysis_file_name": {
+				"value": "barcodes.tsv.gz"
+			},
+			"analysis_file_format": {
+				"value": "tsv.gz"
+			},
+			"analysis_file_description": {
+				"value": "Molecular property identifier"
+			}
+		},
+		{
+			"alias": {
+				"value": "Pig_Immune_Cells_RNA_FAANG_scRNA_PBMBCs"
+			},
+			"project": {
+				"value": "FAANG"
+			},
+			"secondary_project": {
+				"value": null
+			},
+			"analysis_protocol_name": {
+				"value": "PBMC_All Cells_H5 Seurat_scRNAseq"
+			},
+			"analysis_protocol_description": {
+				"value": "https://data.nal.usda.gov/dataset/data-reference-transcriptomics-porcine-peripheral-immune-cells-created-through-bulk-and-single-cell-rna-sequencing"
+			},
+			"analysis_protocol_type": {
+				"value": "processed matrix generation"
+			},
+			"computational_method": {
+				"value": "Seurat"
+			},
+			"computation_method_version": {
+				"value": null
+			},
+			"analysis_file_name": {
+				"value": "PBMC7_AllCells.h5seurat"
+			},
+			"analysis_file_format": {
+				"value": ".h5seurat"
+			},
+			"analysis_file_description": {
+				"value": "Gene expression profile"
+			}
+		}
+	]
+}
