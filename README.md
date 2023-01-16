@@ -36,11 +36,3 @@ In the next section, there will be a brief "How to" on how to use these scripts 
 
 TBD
 
-
-## Questions
-
-- is there any link (aka, link between samples and files) in the metadata? I've seen the same metadata (e.g. project, secondary project) repeated, which could be avoided
-- project information in json format?
-# - What types is each of these?
-#- Have you thought about the data model? e.g. In the HCA, we have donor, specimen, cell suspension etc
-- Where are the data files? 
