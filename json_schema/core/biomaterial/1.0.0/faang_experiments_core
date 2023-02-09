@@ -14,7 +14,7 @@
   ],
   "properties": {
     "describedBy": {
-      "const": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/core/experiments/faang_experiments_core.metadata_rules.json"
+      "const": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/core/biomaterial/1.0.0/faang_experiments_core"
     },
     "schema_version": {
       "description": "The version number of the schema in major.minor.patch format.",
