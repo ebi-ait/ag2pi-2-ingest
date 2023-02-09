@@ -7,7 +7,7 @@
   "type": "object",
   "properties": {
     "describedBy": {
-      "const": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/analyses/faang_analyses_faang_hca.metadata_rules.json"
+      "const": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/file/1.0.0/faang_analyses_faang_hca"
     },
     "schema_version": {
       "description": "The version number of the schema in major.minor.patch format.",
