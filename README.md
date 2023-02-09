@@ -118,10 +118,10 @@ Current issues: Spreadsheet generation blocking export. Talking with devs how to
 - I have adapted the experimental designs to look like this:
 ```mermaid
 graph TD;
-A[organism]-->B[specimen]
-B-->C[cell_specimen]
-B-->D[scrna_seq]
-D-->E[files]
+A[organism]-->B[specimen];
+B-->C[cell_specimen];
+B-->D[scrna_seq];
+D-->E[files];
 ```
 Regarding provenance, could you confirm it is correct?
 
