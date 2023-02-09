@@ -2,9 +2,17 @@ import os
 import sys
 import json
 
-sys.path.insert(0, '/Users/enrique/HumanCellAtlas/ag2pi-2-ingest/src')
+from hca_ingest.api.ingestapi import IngestApi
 
+sys.path.insert(0, '/Users/enrique/HumanCellAtlas/ag2pi-2-ingest/src')
 from json_cleaner.json_cleaner import JsonCleaner
+
+INGEST_TOKEN = os.getenv('INGEST_TOKEN') or "Bearer <token>"
+
+def set_ingestapi():
+    api = IngestApi("https://api.ingest.staging.archive.data.humancellatlas.org/")
+    api.set_token(INGEST_TOKEN)
+    return api
 
 def main(input_path, output_path):
     for file in os.listdir(input_path):
@@ -17,6 +25,7 @@ def main(input_path, output_path):
             for scrna in data['scrna-seq']:
                 cleaner = JsonCleaner(scrna)
                 cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/experiments/faang_experiments_scrna-seq.metadata_rules.json", "describedBy")
+                cleaner.add_field('biomaterial', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.replace_all_values("10X v3.1", "10X v3")
                 cleaner.replace_all_values("second(sense)", "second (sense)")
@@ -27,16 +36,19 @@ def main(input_path, output_path):
                 # Needs to add value (describedBy)
                 cleaner = JsonCleaner(donor)
                 cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_organism.metadata_rules.json", "describedBy")
+                cleaner.add_field('biomaterial', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.save(os.path.join(output_path, f"{donor['custom']['sample_name']['value']}_donor.json"))
             for specimen in data['specimen_from_organism']:
                 cleaner = JsonCleaner(specimen)
                 cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_specimen.metadata_rules.json", "describedBy")
+                cleaner.add_field('biomaterial', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.save(os.path.join(output_path, f"{specimen['custom']['sample_name']['value']}_specimen.json"))
             for cell_specimen in data['cell_specimen']:
                 cleaner = JsonCleaner(cell_specimen)
                 cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_single_cell_specimen.metadata_rules.json", "describedBy")
+                cleaner.add_field('biomaterial', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.add_field("{'value': 'fluids'}", 'tissue_dissociation')
                 cleaner.add_field("{'value': 'centrifugation'}", 'cell_enrichment')
@@ -47,10 +59,11 @@ def main(input_path, output_path):
             for analysis in data['faang_hca']:
                 cleaner = JsonCleaner(analysis)
                 cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/analyses/faang_analyses_faang_hca.metadata_rules.json", "describedBy")
+                cleaner.add_field('file', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.replace_all_values("CellRanger v4.0.0", "cell ranger")
                 cleaner.replace_all_values(".h5seurat", "h5seurat")
-                cleaner.save(f"/Users/enrique/HumanCellAtlas/ag2pi-2-ingest/examples/input/clean_datasets/{analysis['alias']['value']}_{analysis['analysis_file_name']['value']}.json")
+                cleaner.save(os.path.join(output_path, f"{analysis['alias']['value']}_{analysis['analysis_file_name']['value']}.json"))
 
 
 if __name__ == '__main__':

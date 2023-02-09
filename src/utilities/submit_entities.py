@@ -2,6 +2,7 @@ import json
 import os
 import sys
 
+sys.path.insert(0, '/Users/enrique/HumanCellAtlas/ag2pi-2-ingest/src')
 from hca_ingest.api.ingestapi import IngestApi
 
 INGEST_TOKEN = os.getenv('INGEST_TOKEN') or "Bearer <token>"
@@ -11,8 +12,10 @@ def set_ingestapi():
     api.set_token(INGEST_TOKEN)
     return api
 
+
 def submit_entity(api: IngestApi, content, entity_type, submission):
     api.create_entity(submission['_links']['self']['href'], content, entity_type)
+
 
 def read_files(path):
     files = os.listdir(path)
@@ -36,4 +39,4 @@ def main(path, submission_uuid):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], 'a57eaa06-a212-4993-93c8-df3293a1fd42')
+    main(sys.argv[1], sys.argv[2])

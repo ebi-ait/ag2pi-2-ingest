@@ -32,6 +32,7 @@
         }
     }, 
     "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_single_cell_specimen.metadata_rules.json", 
+    "schema_type": "biomaterial", 
     "tissue_dissociation": {
         "value": "fluids"
     }, 

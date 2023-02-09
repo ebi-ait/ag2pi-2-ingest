@@ -1,2 +1,2 @@
-hca-ingest==2.4.1
+hca-ingest==2.8.0
 

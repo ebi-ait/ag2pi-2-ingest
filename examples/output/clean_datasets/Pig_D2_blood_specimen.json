@@ -47,5 +47,6 @@
             "value": "Pig_D2_blood"
         }
     }, 
-    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_specimen.metadata_rules.json"
+    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_specimen.metadata_rules.json", 
+    "schema_type": "biomaterial"
 }

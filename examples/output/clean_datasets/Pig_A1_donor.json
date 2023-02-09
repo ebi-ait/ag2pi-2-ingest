@@ -38,5 +38,6 @@
             "value": "Pig_A1"
         }
     }, 
-    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_organism.metadata_rules.json"
+    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_organism.metadata_rules.json", 
+    "schema_type": "biomaterial"
 }

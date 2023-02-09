@@ -26,5 +26,6 @@
     "analysis_file_description": {
         "value": "Gene expression profile"
     }, 
-    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/analyses/faang_analyses_faang_hca.metadata_rules.json"
+    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/analyses/faang_analyses_faang_hca.metadata_rules.json", 
+    "schema_type": "file"
 }

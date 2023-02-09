@@ -24,12 +24,14 @@ class JsonCleaner:
         exec(replace_statement)
 
     def add_field(self, value, fqk):
-        value = f"'{value}'" if not value.isnumeric() and not self.is_dict(value) else value
+        value = f"'{value}'" if self.is_string(value) else value
         add_statement = self.create_exec_statement("", fqk, f"= {value}")
         exec(add_statement)
 
-    def is_dict(self, value: str):
-        return True if value.startswith('{') and value.endswith('}') else False
+    def is_string(self, value: str):
+        if value.startswith("[") or value.startswith('{') or value.isnumeric():
+            return False
+        return True
 
     def return_content_on_fqk(self, fqk: str):
         content = self.content
@@ -47,7 +49,6 @@ class JsonCleaner:
             if full_qualified_key.split(".")[-1].isdigit():
                 full_qualified_key = ".".join(full_qualified_key.split(".")[:-1])
             try:
-                print(full_qualified_key)
                 self.delete_field(full_qualified_key)
             except KeyError:
                 # Sometimes there's more than 1 null value

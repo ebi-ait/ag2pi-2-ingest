@@ -83,5 +83,6 @@
             "value": "Pig_Immune_Cells_RNA_FAANG_scRNA_PBMBCs_C1"
         }
     }, 
-    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/experiments/faang_experiments_scrna-seq.metadata_rules.json"
+    "describedBy": "https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/experiments/faang_experiments_scrna-seq.metadata_rules.json", 
+    "schema_type": "biomaterial"
 }
