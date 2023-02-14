@@ -45,7 +45,7 @@
                   "obo:ncbitaxon"
                 ],
                 "classes": [
-                  "NCBITaxon:1"
+                  "NCBITaxon:2759"
                 ],
                 "relations": [
                   "rdfs:subClassOf"
