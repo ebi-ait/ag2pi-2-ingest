@@ -19,7 +19,9 @@
       "type": "object",
       "name": "analysis protocol",
       "description": "analysis protocol",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -33,7 +35,9 @@
       "type": "object",
       "name": "analysis protocol description",
       "description": "analysis protocol description",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -47,11 +51,16 @@
       "type": "object",
       "name": "analysis protocol type",
       "description": "analysis protocol type",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
-          "enum": ["raw matrix generation", "processed matrix generation"]
+          "enum": [
+            "raw matrix generation",
+            "processed matrix generation"
+          ]
         },
         "mandatory": {
           "const": "recommended"
@@ -62,11 +71,19 @@
       "type": "object",
       "name": "computational method",
       "description": "computational method",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
-          "enum": ["cell ranger", "Seurat", "Signac", "scran", "scanpy"]
+          "enum": [
+            "cell ranger",
+            "Seurat",
+            "Signac",
+            "scran",
+            "scanpy"
+          ]
         },
         "mandatory": {
           "const": "recommended"
@@ -77,7 +94,9 @@
       "type": "object",
       "name": "computational method",
       "description": "computational method",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "number"
@@ -91,7 +110,9 @@
       "type": "object",
       "name": "analysis file name",
       "description": "analysis file name",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -105,12 +126,21 @@
       "type": "object",
       "name": "analysis file format",
       "description": "analysis file format",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
-          "enum": ["tsv.gz", "mtx.gz", "bed.gz", "fastq.gz", "RDS", "rds",
-            "h5seurat"]
+          "enum": [
+            "tsv.gz",
+            "mtx.gz",
+            "bed.gz",
+            "fastq.gz",
+            "RDS",
+            "rds",
+            "h5seurat"
+          ]
         },
         "mandatory": {
           "const": "recommended"
@@ -121,7 +151,9 @@
       "type": "object",
       "name": "analysis file description",
       "description": "analysis file description",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -131,5 +163,6 @@
         }
       }
     }
-  }
+  },
+  "$id": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/file/1.0.0/faang_analyses_faang_hca"
 }

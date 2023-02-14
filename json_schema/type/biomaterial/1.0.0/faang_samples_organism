@@ -4,7 +4,11 @@
   "name": "faang_samples_organism.metadata_rules",
   "$async": true,
   "type": "object",
-  "required": ["samples_core", "organism", "sex"],
+  "required": [
+    "samples_core",
+    "organism",
+    "sex"
+  ],
   "properties": {
     "describedBy": {
       "const": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/biomaterial/1.0.0/faang_samples_organism"
@@ -24,7 +28,10 @@
       "type": "object",
       "name": "Organism",
       "description": "NCBI taxon ID of organism.",
-      "required": ["text", "term"],
+      "required": [
+        "text",
+        "term"
+      ],
       "properties": {
         "text": {
           "type": "string"
@@ -34,9 +41,15 @@
             {
               "type": "string",
               "graph_restriction": {
-                "ontologies": ["obo:ncbitaxon"],
-                "classes": ["NCBITaxon:1"],
-                "relations": ["rdfs:subClassOf"],
+                "ontologies": [
+                  "obo:ncbitaxon"
+                ],
+                "classes": [
+                  "NCBITaxon:1"
+                ],
+                "relations": [
+                  "rdfs:subClassOf"
+                ],
                 "direct": false,
                 "include_self": false
               }
@@ -58,7 +71,10 @@
       "type": "object",
       "name": "Sex",
       "description": "Animal sex, described using any child term of PATO_0000047.",
-      "required": ["text", "term"],
+      "required": [
+        "text",
+        "term"
+      ],
       "properties": {
         "text": {
           "type": "string"
@@ -68,9 +84,15 @@
             {
               "type": "string",
               "graph_restriction": {
-                "ontologies": ["obo:pato"],
-                "classes": ["PATO:0000047"],
-                "relations": ["rdfs:subClassOf"],
+                "ontologies": [
+                  "obo:pato"
+                ],
+                "classes": [
+                  "PATO:0000047"
+                ],
+                "relations": [
+                  "rdfs:subClassOf"
+                ],
                 "direct": false,
                 "include_self": false
               }
@@ -92,7 +114,10 @@
       "type": "object",
       "name": "birth date",
       "description": "Birth date, in the format YYYY-MM-DD, or YYYY-MM where only the month is known. For embryo samples record 'not applicable'.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "type": "string",
@@ -131,7 +156,10 @@
       "type": "object",
       "name": "breed",
       "description": "Animal breed, described using the FAANG breed description guidelines (http://bit.ly/FAANGbreed). Should be considered mandatory for terrestiral species, for aquatic species record 'not applicable'.",
-      "required": ["text", "term"],
+      "required": [
+        "text",
+        "term"
+      ],
       "properties": {
         "text": {
           "type": "string"
@@ -141,20 +169,26 @@
             {
               "type": "string",
               "graph_restriction": {
-                "ontologies": ["obo:lbo"],
-                "classes": ["LBO:0000000"],
-                "relations": ["rdfs:subClassOf"],
+                "ontologies": [
+                  "obo:lbo"
+                ],
+                "classes": [
+                  "LBO:0000000"
+                ],
+                "relations": [
+                  "rdfs:subClassOf"
+                ],
                 "direct": false,
                 "include_self": false
               }
             },
-              {
-                "type": "string",
-                "enum": [
-                  "not applicable",
-                  "restricted access"
-                ]
-              }
+            {
+              "type": "string",
+              "enum": [
+                "not applicable",
+                "restricted access"
+              ]
+            }
           ]
         },
         "mandatory": {
@@ -171,7 +205,10 @@
       "description": "Healthy animals should have the term normal, otherwise use the as many disease terms as necessary from EFO.",
       "items": {
         "type": "object",
-        "required": ["text", "term"],
+        "required": [
+          "text",
+          "term"
+        ],
         "properties": {
           "text": {
             "type": "string"
@@ -181,9 +218,17 @@
               {
                 "type": "string",
                 "graph_restriction": {
-                  "ontologies": ["obo:pato", "obo:efo"],
-                  "classes": ["PATO:0000461", "EFO:0000408"],
-                  "relations": ["rdfs:subClassOf"],
+                  "ontologies": [
+                    "obo:pato",
+                    "obo:efo"
+                  ],
+                  "classes": [
+                    "PATO:0000461",
+                    "EFO:0000408"
+                  ],
+                  "relations": [
+                    "rdfs:subClassOf"
+                  ],
                   "direct": false,
                   "include_self": true
                 }
@@ -204,7 +249,10 @@
           },
           "ontology_name": {
             "type": "string",
-            "enum": ["PATO", "EFO"]
+            "enum": [
+              "PATO",
+              "EFO"
+            ]
           }
         }
       }
@@ -213,7 +261,9 @@
       "type": "object",
       "name": "diet",
       "description": "Organism diet summary, more detailed information will be recorded in the associated protocols. Particuarly important for projects with controlled diet treatements. Free text field, but ensure standardisation within each study.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -227,7 +277,9 @@
       "type": "object",
       "name": "birth location",
       "description": "Name of the birth location.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -241,7 +293,10 @@
       "type": "object",
       "name": "birth location latitude",
       "description": "Latitude of the birth location in decimal degrees.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "type": "number"
@@ -258,7 +313,10 @@
       "type": "object",
       "name": "birth location longitude",
       "description": "Longitude of the birth location in decimal degrees.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "type": "number"
@@ -275,14 +333,20 @@
       "type": "object",
       "name": "birth weight",
       "description": "Birth weight, in kilograms or grams.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "type": "number"
         },
         "units": {
           "type": "string",
-          "enum": ["kilograms", "grams"]
+          "enum": [
+            "kilograms",
+            "grams"
+          ]
         },
         "mandatory": {
           "const": "optional"
@@ -293,14 +357,20 @@
       "type": "object",
       "name": "placental weight",
       "description": "Placental weight, in kilograms or grams.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "type": "number"
         },
         "units": {
           "type": "string",
-          "enum": ["kilograms", "grams"]
+          "enum": [
+            "kilograms",
+            "grams"
+          ]
         },
         "mandatory": {
           "const": "optional"
@@ -311,14 +381,24 @@
       "type": "object",
       "name": "pregnancy length",
       "description": "Pregnancy length of time, in days, weeks or months.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "type": "number"
         },
         "units": {
           "type": "string",
-          "enum": ["days", "weeks", "months", "day", "week", "month"]
+          "enum": [
+            "days",
+            "weeks",
+            "months",
+            "day",
+            "week",
+            "month"
+          ]
         },
         "mandatory": {
           "const": "optional"
@@ -329,7 +409,9 @@
       "type": "object",
       "name": "delivery timing",
       "description": "Was pregnancy full-term. early or delayed.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
@@ -348,7 +430,9 @@
       "type": "object",
       "name": "delivery ease",
       "description": "Did the delivery require assistance.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
@@ -367,7 +451,9 @@
       "type": "object",
       "name": "Pedigree",
       "description": "A link to pedigree information for the animal.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
@@ -386,7 +472,9 @@
       "description": "Sample name or Biosample ID for sire/dam. Required if related animals are part of FAANG, e.g. quads.",
       "items": {
         "type": "object",
-        "required": ["value"],
+        "required": [
+          "value"
+        ],
         "properties": {
           "value": {
             "type": "string"
@@ -397,5 +485,6 @@
         }
       }
     }
-  }
+  },
+  "$id": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/biomaterial/1.0.0/faang_samples_organism"
 }

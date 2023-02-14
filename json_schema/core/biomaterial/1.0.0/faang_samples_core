@@ -5,7 +5,10 @@
   "name": "faang_samples_core.metadata_rules",
   "$async": true,
   "type": "object",
-  "required": ["material", "project"],
+  "required": [
+    "material",
+    "project"
+  ],
   "properties": {
     "describedBy": {
       "const": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/core/biomaterial/1.0.0/faang_samples_core"
@@ -20,7 +23,9 @@
       "type": "object",
       "name": "Sample Description",
       "description": "A brief description of the sample including species name.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -34,7 +39,10 @@
       "type": "object",
       "name": "Material",
       "description": "The type of material being described.",
-      "required": ["text", "term"],
+      "required": [
+        "text",
+        "term"
+      ],
       "properties": {
         "text": {
           "type": "string",
@@ -79,7 +87,9 @@
       "type": "object",
       "name": "Project",
       "description": "State that the project is 'FAANG'.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "const": "FAANG"
@@ -95,7 +105,9 @@
       "description": "State the secondary project(s) that this data belongs to e.g. 'AQUA-FAANG', 'GENE-SWitCH' or 'BovReg'. Please use your official consortium shortened acronym if available. If your secondary project is not in the list, please contact the faang-dcc helpdesk to have it added. If your project uses the FAANG data portal project slices (https://data.faang.org/projects) then this field is required to ensure that your data appears in the data slice.",
       "items": {
         "type": "object",
-        "required": ["value"],
+        "required": [
+          "value"
+        ],
         "properties": {
           "value": {
             "type": "string",
@@ -119,7 +131,9 @@
       "type": "object",
       "name": "Availability",
       "description": "Either a link to a web page giving information on sample availability (who to contact and if the sample is available), or a e-mail address to contact about availability. E-mail addresses should be prefixed with 'mailto:', e.g. 'mailto:samples@example.ac.uk'. In either case, long term support of the web page or e-mail address is necessary. Group e-mail addresses are preferable to indiviudal.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
@@ -134,7 +148,9 @@
       "type": "object",
       "name": "Same as",
       "description": "BioSample ID for an equivalent sample record, created before the FAANG metadata specification was available. This is optional and not intended for general use, please contact the data coordination centre (faang-dcc@ebi.ac.uk) before using it.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -144,5 +160,6 @@
         }
       }
     }
-  }
+  },
+  "$id": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/core/biomaterial/1.0.0/faang_samples_core"
 }

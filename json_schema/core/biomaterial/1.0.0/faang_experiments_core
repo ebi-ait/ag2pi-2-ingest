@@ -26,7 +26,9 @@
       "type": "object",
       "name": "Project",
       "description": "State that the project is 'FAANG'.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "const": "FAANG"
@@ -42,7 +44,9 @@
       "description": "State the secondary project(s) that this data belongs to e.g. 'AQUA-FAANG', 'GENE-SWitCH' or 'BovReg'. Please use your official consortium shortened acronym if available. If your secondary project is not in the list, please contact the faang-dcc helpdesk to have it added. If your project uses the FAANG data portal project slices (https://data.faang.org/projects) then this field is required to ensure that your data appears in the data slice.",
       "items": {
         "type": "object",
-        "required": ["value"],
+        "required": [
+          "value"
+        ],
         "properties": {
           "value": {
             "type": "string",
@@ -66,7 +70,9 @@
       "type": "object",
       "name": "assay type",
       "description": "The type of experiment performed.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
@@ -97,7 +103,9 @@
       "type": "object",
       "name": "sample storage",
       "description": "How the sample was stored. Temperatures are in celsius. 'Frozen, vapor phase' refers to storing samples above liquid nitrogen in the vapor.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
@@ -123,7 +131,9 @@
       "type": "object",
       "name": "sample storage processing",
       "description": "How the sample was prepared for storage.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
@@ -148,12 +158,19 @@
       "type": "object",
       "name": "sampling to preparation interval",
       "description": "How long between the sample being taken and the assay experiment preperations commencing. If sample preperations were then left in intermediate stages after preperation commenced, for example as sheared chromatin, then this should be made clear in your protocols.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "oneOf": [
-            {"type": "number"},
-            {"const": "restricted access"}
+            {
+              "type": "number"
+            },
+            {
+              "const": "restricted access"
+            }
           ]
         },
         "units": {
@@ -183,7 +200,9 @@
       "type": "object",
       "name": "experimental protocol",
       "description": "Link to the description of the experiment protocol, an overview of the full experiment, that can refer to the order in which other protocols were performed and any intermediate steps not covered by the extraction or assay specific protocols.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string",
@@ -198,7 +217,9 @@
       "type": "object",
       "name": "extraction protocol",
       "description": "Link to the protocol used to isolate the extract material.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "oneOf": [
@@ -206,7 +227,9 @@
               "type": "string",
               "format": "uri"
             },
-            {"const": "restricted access"}
+            {
+              "const": "restricted access"
+            }
           ]
         },
         "mandatory": {
@@ -218,7 +241,9 @@
       "type": "object",
       "name": "library preparation location",
       "description": "Location where library preperation was performed.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -232,11 +257,16 @@
       "type": "object",
       "name": "library preparation location longitude",
       "description": "Longitude of the library prep location in decimal degrees.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "oneOf": [
-            {"type": "number"},
+            {
+              "type": "number"
+            },
             {
               "type": "string",
               "enum": [
@@ -250,7 +280,9 @@
         },
         "units": {
           "oneOf": [
-            {"const": "decimal degrees"},
+            {
+              "const": "decimal degrees"
+            },
             {
               "type": "string",
               "enum": [
@@ -271,11 +303,16 @@
       "type": "object",
       "name": "library preparation location latitude",
       "description": "Latitude of the library prep location in decimal degrees.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "oneOf": [
-            {"type": "number"},
+            {
+              "type": "number"
+            },
             {
               "type": "string",
               "enum": [
@@ -289,7 +326,9 @@
         },
         "units": {
           "oneOf": [
-            {"const": "decimal degrees"},
+            {
+              "const": "decimal degrees"
+            },
             {
               "type": "string",
               "enum": [
@@ -310,7 +349,10 @@
       "type": "object",
       "name": "library preparation date",
       "description": "Date on which the library was prepared.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "oneOf": [
@@ -350,7 +392,9 @@
       "type": "object",
       "name": "sequencing location",
       "description": "Location of where the sequencing was performed.",
-      "required": ["value"],
+      "required": [
+        "value"
+      ],
       "properties": {
         "value": {
           "type": "string"
@@ -364,11 +408,16 @@
       "type": "object",
       "name": "sequencing location longitude",
       "description": "Longitude of the sequencing location in decimal degrees.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "oneOf": [
-            {"type": "number"},
+            {
+              "type": "number"
+            },
             {
               "type": "string",
               "enum": [
@@ -382,7 +431,9 @@
         },
         "units": {
           "oneOf": [
-            {"const": "decimal degrees"},
+            {
+              "const": "decimal degrees"
+            },
             {
               "type": "string",
               "enum": [
@@ -403,11 +454,16 @@
       "type": "object",
       "name": "sequencing location latitude",
       "description": "Latitude of the sequencing location in decimal degrees.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "oneOf": [
-            {"type": "number"},
+            {
+              "type": "number"
+            },
             {
               "type": "string",
               "enum": [
@@ -421,7 +477,9 @@
         },
         "units": {
           "oneOf": [
-            {"const": "decimal degrees"},
+            {
+              "const": "decimal degrees"
+            },
             {
               "type": "string",
               "enum": [
@@ -442,7 +500,10 @@
       "type": "object",
       "name": "sequencing date",
       "description": "Date sequencing was performed.",
-      "required": ["value", "units"],
+      "required": [
+        "value",
+        "units"
+      ],
       "properties": {
         "value": {
           "oneOf": [
@@ -478,5 +539,6 @@
         }
       }
     }
-  }
+  },
+  "$id": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/core/biomaterial/1.0.0/faang_experiments_core"
 }
