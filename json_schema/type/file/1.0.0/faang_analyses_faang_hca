@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Validation rules for the FAANG project. Rules are divided into one group that is applied to all analyses, and additional groups based on the analysis type.",
-  "title": "FAANG analyses metadata rules for 'faang hca ingestion'",
-  "name": "faang_analyses_faang_hca.metadata_rules",
+  "title": "FAANG analyses FAANG HCA",
+  "name": "faang_analyses_faang_hca",
   "$async": true,
   "type": "object",
   "properties": {

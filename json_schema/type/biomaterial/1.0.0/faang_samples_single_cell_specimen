@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Ruleset for material is 'cell specimen' or 'single cell specimen'.",
-  "title": "FAANG sample metadata rules for 'cell specimen' or 'single cell specimen'.",
-  "name": "faang_samples_purified_cells.metadata_rules",
+  "title": "FAANG samples single cell specimen",
+  "name": "faang_samples_single_cell_specimen",
   "$async": true,
   "type": "object",
   "required": [

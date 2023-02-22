@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Ruleset for assay type is 'scrna-seq'.",
-  "title": "FAANG experiment metadata rules for 'scrna-seq'",
-  "name": "faang_experiments_rna-seq.metadata_rules",
+  "title": "FAANG experiments scRNA seq",
+  "name": "faang_experiments_scrna_seq",
   "$async": true,
   "type": "object",
   "required": [
