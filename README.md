@@ -111,19 +111,24 @@ The submission is now ready. Next steps are:
 Current issues: Spreadsheet generation blocking export. Talking with devs how to
 
 
-## Questions
+## Changes to schemas - Necessary for validation
 
-- Sequence files were not included in the metadata, but I found them in ENA. I have adapted that
-- There are several BioSamples accessions in ENA (22), but only 7 in the metadata provided.
-- I have adapted the experimental designs to look like this:
-```mermaid
-graph TD;
-A[organism]-->B[specimen];
-B-->C[cell_specimen];
-B-->D[scrna_seq];
-D-->E[files];
-```
-Regarding provenance, could you confirm it is correct?
+All the schemas can be found in the official FAANG repository. For the purpose of this demonstration, I've had to make some changes in the schemas.
 
-- Matrices: the files provided just refer to general files. I can curate the metadata for those files, it should be easy, but I want to confirm:
-  What kind of data are you trying to push to terra? everything?
+- Added necessary keyword `$id`
+- Cloned them in HCA schema path consistency (`.../(type|core|module){1}(biomaterial|file|protocol)/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/$schema_name`)
+- Changed some ontology paths - Ingest UI works against the HCAO deployment of OLS (https://ontology.archive.data.humancellatlas.org/index), which includes changes in structure and missing fields
+    - NCBI taxon ID (samples_organism schema): changed NCBITaxon:1 to NCBITaxon:2579
+
+
+## Changes to data modelling
+
+The dataset needed to be modelled to adapt to HCA schemas. The current logic is in the *linker.py scripts 
+
+# Take Aways
+
+## Changes needed in the system to make this work
+- Ontology validation: Currently validating against HCAO deployment of ols
+  - Good side: can be pointed out to any other deployment
+- Schemas need to be adapted to be able to be ingested and validated (Described in previous section)
+- Improved spreadsheet generation to accept custom schemas
