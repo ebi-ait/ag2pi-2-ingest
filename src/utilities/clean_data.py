@@ -24,7 +24,7 @@ def main(input_path, output_path):
         if "scRNA" in file:
             for scrna in data['scrna-seq']:
                 cleaner = JsonCleaner(scrna)
-                cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/experiments/faang_experiments_scrna-seq.metadata_rules.json", "describedBy")
+                cleaner.add_field("https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/biomaterial/1.0.0/faang_experiments_scrna_seq", "describedBy")
                 cleaner.add_field('biomaterial', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.replace_all_values("10X v3.1", "10X v3")
@@ -35,19 +35,19 @@ def main(input_path, output_path):
             for donor in data['organism']:
                 # Needs to add value (describedBy)
                 cleaner = JsonCleaner(donor)
-                cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_organism.metadata_rules.json", "describedBy")
+                cleaner.add_field("https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/biomaterial/1.0.0/faang_samples_organism", "describedBy")
                 cleaner.add_field('biomaterial', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.save(os.path.join(output_path, f"{donor['custom']['sample_name']['value']}_donor.json"))
             for specimen in data['specimen_from_organism']:
                 cleaner = JsonCleaner(specimen)
-                cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_specimen.metadata_rules.json", "describedBy")
+                cleaner.add_field("https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/biomaterial/1.0.0/faang_samples_specimen", "describedBy")
                 cleaner.add_field('biomaterial', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.save(os.path.join(output_path, f"{specimen['custom']['sample_name']['value']}_specimen.json"))
             for cell_specimen in data['cell_specimen']:
                 cleaner = JsonCleaner(cell_specimen)
-                cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/samples/faang_samples_single_cell_specimen.metadata_rules.json", "describedBy")
+                cleaner.add_field("https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/biomaterial/1.0.0/faang_samples_single_cell_specimen", "describedBy")
                 cleaner.add_field('biomaterial', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.add_field("{'value': 'fluids'}", 'tissue_dissociation')
@@ -56,9 +56,10 @@ def main(input_path, output_path):
                 cleaner.save(os.path.join(output_path, f"{cell_specimen['custom']['sample_name']['value']}_cell_specimen.json"))
     # analysis.json
         if 'analysis' in file:
+            continue
             for analysis in data['faang_hca']:
                 cleaner = JsonCleaner(analysis)
-                cleaner.add_field("https://raw.githubusercontent.com/FAANG/dcc-metadata/hca/json_schema/type/analyses/faang_analyses_faang_hca.metadata_rules.json", "describedBy")
+                cleaner.add_field("https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/file/1.0.0/faang_analyses_faang_hca", "describedBy")
                 cleaner.add_field('file', 'schema_type')
                 cleaner.clean_null_values()
                 cleaner.replace_all_values("CellRanger v4.0.0", "cell ranger")
