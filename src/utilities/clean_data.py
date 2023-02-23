@@ -44,6 +44,11 @@ def main(input_path, output_path):
                 cleaner.add_field("https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/biomaterial/1.0.0/faang_samples_specimen", "describedBy")
                 cleaner.add_field('biomaterial', 'schema_type')
                 cleaner.clean_null_values()
+                # Special mention to the lines below; this is to correct all specimens linking to donor A1
+                specimen_name = cleaner.content['custom']['sample_name']['value']
+                correct_donor_name = "_".join(specimen_name.split('_')[:-1])
+                wrong_donor_name = cleaner.content['derived_from']['value']
+                cleaner.replace_all_values(wrong_donor_name, correct_donor_name)
                 cleaner.save(os.path.join(output_path, f"{specimen['custom']['sample_name']['value']}_specimen.json"))
             for cell_specimen in data['cell_specimen']:
                 cleaner = JsonCleaner(cell_specimen)
