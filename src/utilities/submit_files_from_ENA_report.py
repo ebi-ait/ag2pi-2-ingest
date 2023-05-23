@@ -70,14 +70,45 @@ def submit_files_and_processes(api: IngestApi, submission, sequence_files: dict,
         link_biomaterials_with_process(api, biomaterials, ingest_process)
 
 
+def discard_processes_without_inputs(api: IngestApi, submission: dict):
+    processes = list(api.get_entities(submission['_links']['self']['href'], 'processes', 'processes'))
+    for p in processes:
+        if "process_id" in p['content']['process_core']['process_id']:
+            continue
+        inputBiomat = api.get(p['_links']['inputBiomaterials']['href']).json()
+        if not inputBiomat.get('_embedded'):
+            files = api.get(p['_links']['derivedFiles']['href']).json()['_embedded']['files']
+            for file in files:
+                api.delete(file['_links']['self']['href'])
+            api.delete(p['_links']['self']['href'])
+
+
+def extract_bsd_accession_from_filenames(path):
+    accessions = [filename.split('_')[0] for filename in os.listdir(path) if "SAMEA" in filename]
+    return accessions
+
+
+def filter_accessions_from_report(json_report, whitelist=(), blacklist=()):
+    filtered_accessions = json_report
+    filtered_accessions = [file_metadata for file_metadata in filtered_accessions if file_metadata['sample_accession']
+                               in whitelist]
+    return filtered_accessions
+
 
 def main(submission_uuid, ena_project_accession, examples_path):
+    # Find which files are scRNA seq
+    biosamples_accessions = extract_bsd_accession_from_filenames(f"{os.path.join(examples_path, 'output')}")
+
     json_report = read_ena_json_report(ena_project_accession)
+
+    json_report = filter_accessions_from_report(json_report, biosamples_accessions)
+
     base_sequence_file = fileReader.read_file(os.path.join(examples_path, "base_sequence_file/base_sequence_file.json"))
     sequence_files = translate_report_to_hca_metadata(json_report, base_sequence_file)
     api = set_ingestapi()
     submission = api.get_submission_by_uuid(submission_uuid)
     submit_files_and_processes(api, submission, sequence_files, examples_path)
+    discard_processes_without_inputs(api, submission)
 
 
 

@@ -19,15 +19,23 @@ def get_all_biomaterials_from_submission(api: IngestApi, submission_url):
     return list(biomaterials)
 
 
-def discard_primary_entities(entity_list):
-    return [e for e in entity_list if e.get('content').get('derived_from')]
+def divide_leaf_entities(entity_list):
+    scrna_entities = [e for e in entity_list if not e.get('content').get('derived_from') and e.get('content').get('custom').get('experiment_alias')]
+    derived_entities = [e for e in entity_list if e.get('content').get('derived_from')]
+    return scrna_entities, derived_entities
 
-def map_from_entities(derived_entities, biomaterial_uuid_map):
+def map_from_entities(derived_entities, scrna_entities, biomaterial_uuid_map):
     process_map = {}
     for e in derived_entities:
-
-        process_map[biomaterial_uuid_map[e['content']['custom']['sample_name']['value']]] = {'derived_from': biomaterial_uuid_map[e['content']['derived_from']['value']],
+        process_map[biomaterial_uuid_map[e['content']['custom']['sample_name']['value']]] = {'derived_from': [biomaterial_uuid_map[e['content']['derived_from']['value']]],
                                                             'process': ''}
+    # SCRNA entities do not have direct linking expressed; linked by donor name (All B1 cell specimens to scRNA seq with experiment alias with B1)
+    for e in scrna_entities:
+        scrna_name = e['uuid']['uuid']
+        experimental_alias = e['content']['custom']['experiment_alias']['value']
+        donor_alias = experimental_alias.split('_')[-1]
+        linking_entities = [biomaterial_uuid_map[ent['content']['custom']['sample_name']['value']] for ent in derived_entities if "cell_specimen" in ent['content']['describedBy'] and donor_alias in ent['content']['custom']['sample_name']['value']]
+        process_map[scrna_name] = {'derived_from': linking_entities, 'process': ''}
     return process_map
 
 
@@ -54,9 +62,10 @@ def link_entities_with_process(process_mapping, api: IngestApi):
     for from_entity_uuid, link_params in process_mapping.items():
         from_entity = api.get_entity_by_uuid('biomaterials', from_entity_uuid)
         process = link_params['process']
-        to_entity = api.get_entity_by_uuid('biomaterials', link_params['derived_from'])
-        api.link_entity(from_entity=to_entity, to_entity=process, relationship='derivedByProcesses')
-        api.link_entity(from_entity=from_entity, to_entity=process, relationship='inputToProcesses')
+        for entity in link_params['derived_from']:
+            to_entity = api.get_entity_by_uuid('biomaterials', entity)
+            api.link_entity(from_entity=from_entity, to_entity=process, relationship='derivedByProcesses')
+            api.link_entity(from_entity=to_entity, to_entity=process, relationship='inputToProcesses')
 
 
 def main(submission_uuid, examples_path):
@@ -64,8 +73,8 @@ def main(submission_uuid, examples_path):
     submission_url = api.get_submission_by_uuid(submission_uuid)['_links']['self']['href']
     json_entities = get_all_biomaterials_from_submission(api, submission_url)
     biomaterial_uuid_map = construct_biomaterial_uuid_mapping(json_entities)
-    derived_entities = discard_primary_entities(json_entities)
-    process_mapping = map_from_entities(derived_entities, biomaterial_uuid_map)
+    scrna_entities, derived_entities = divide_leaf_entities(json_entities)
+    process_mapping = map_from_entities(derived_entities, scrna_entities, biomaterial_uuid_map)
     process_mapping_with_processes = create_processes_from_map(api, process_mapping, submission_url, examples_path)
     link_entities_with_process(process_mapping, api)
 
