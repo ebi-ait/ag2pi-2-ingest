@@ -1,0 +1,43 @@
+{
+    "organism": {
+        "text": "Sus scrofa", 
+        "term": "NCBITaxon:9823"
+    }, 
+    "sex": {
+        "text": "castrated male", 
+        "term": "PATO:0002367"
+    }, 
+    "birth_date": {
+        "value": "2017", 
+        "units": "YYYY"
+    }, 
+    "breed": {
+        "text": "Pig crossbreed", 
+        "term": "LBO:0001040"
+    }, 
+    "health_status": [
+        {
+            "text": "normal", 
+            "term": "PATO:0000461"
+        }
+    ], 
+    "samples_core": {
+        "sample_description": {
+            "value": "Crossbreed pig, adult, 1 year of age"
+        }, 
+        "material": {
+            "text": "organism", 
+            "term": "OBI:0100026"
+        }, 
+        "project": {
+            "value": "FAANG"
+        }
+    }, 
+    "custom": {
+        "sample_name": {
+            "value": "Pig_B3"
+        }
+    }, 
+    "describedBy": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/biomaterial/1.0.0/faang_samples_organism", 
+    "schema_type": "biomaterial"
+}

@@ -1,0 +1,45 @@
+{
+    "markers": {
+        "value": "CD3e-CD172a-CD8a+"
+    }, 
+    "cell_type": [
+        {
+            "text": "mature NK T cell", 
+            "term": "CL:0000814"
+        }
+    ], 
+    "purification_protocol": {
+        "value": "https://data.faang.org/api/fire_api/samples/ISU_SOP_sorting_swine_immune_cells_20210113.pdf"
+    }, 
+    "derived_from": {
+        "value": "Pig_B2_blood"
+    }, 
+    "samples_core": {
+        "sample_description": {
+            "value": "Unstimulated NK sorted cell"
+        }, 
+        "material": {
+            "text": "cell specimen", 
+            "term": "OBI:0001468"
+        }, 
+        "project": {
+            "value": "FAANG"
+        }
+    }, 
+    "custom": {
+        "sample_name": {
+            "value": "B2_NK"
+        }
+    }, 
+    "describedBy": "https://raw.githubusercontent.com/ebi-ait/ag2pi-2-ingest/main/json_schema/type/biomaterial/1.0.0/faang_samples_single_cell_specimen", 
+    "schema_type": "biomaterial", 
+    "tissue_dissociation": {
+        "value": "fluids"
+    }, 
+    "cell_enrichment": {
+        "value": "centrifugation"
+    }, 
+    "single_cell_isolation_protocol": {
+        "value": "https://data.faang.org/api/fire_api/samples/ISU_SOP_sorting_swine_immune_cells_20210113.pdf"
+    }
+}
