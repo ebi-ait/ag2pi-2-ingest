@@ -130,3 +130,6 @@ dmypy.json
 
 # Requests-cache file
 *http_cache.sqlite
+
+# MONGODB - UUID map file
+*mongodb_map.json
