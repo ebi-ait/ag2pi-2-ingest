@@ -34,6 +34,7 @@ Small scripts, written to help deal with the submission tasks.
 - create_submission.py: Given a project UUID, create an empty submission and link it to that project.
 - submit_entities.py: Given an input path with all the entities ready to submit (Post clean-up), and a submission URL (API link), submit the entities to the submission for validation.
 - clear_entities.py: Given a submission link, delete all the biomaterials and files present in the submission.
+- clear_all_processes.py: Given a submission UUID, delete all processes in a submission. Effectively deletes linking.
 - biomaterial_linker.py: links existing biomaterials in the submission, based on metadata available.
 - submit_files_from_ENA_report: given an accession, create the metadata and submit it for sequence files.
 - file_linker: Takes the metadata about the files and links them with the existing biomaterials in a submission
@@ -71,7 +72,7 @@ export INGEST_TOKEN="Bearer $token"
 3. Run scripts in order:
 ```bash
 cd src/utilities
-python create_submission.py $project_uuid
+python3 create_submission.py $project_uuid
 ```
 This will print a submission URL. Click in there, and annotate the submission UUID (`'uuid': {'uuid': 'submission_uuid'}}`).
 This will be our `$submission_uuid`
@@ -108,8 +109,6 @@ The submission is now ready. Next steps are:
 - Put it to graph valid.
 - Export
 
-Current issues: Spreadsheet generation blocking export. Talking with devs how to
-
 
 ## Changes to schemas - Necessary for validation
 
@@ -123,12 +122,60 @@ All the schemas can be found in the official FAANG repository. For the purpose o
 
 ## Changes to data modelling
 
-The dataset needed to be modelled to adapt to HCA schemas. The current logic is in the *linker.py scripts 
+The dataset needed to be modelled to adapt to HCA schemas. The current logic is in the *linker.py scripts, but can be
+resumed in this diagram
 
-# Take Aways
+```mermaid
+graph TD;
+A[organism]-->B[specimen];
+B-->C[cell_specimen];
+C-->D[scrna_seq];
+D-->E[files];
+```
 
-## Changes needed in the system to make this work
-- Ontology validation: Currently validating against HCAO deployment of ols
-  - Good side: can be pointed out to any other deployment
-- Schemas need to be adapted to be able to be ingested and validated (Described in previous section)
-- Improved spreadsheet generation to accept custom schemas
+# Export to terra
+
+## Design
+
+From HCA ingest to Terra:
+
+```mermaid
+graph LR;
+Z[Ingest service] -. export_scripts .-> A[Root];
+A --> B>summary.json];
+A --> C[metadata_files];
+A --> D[data_files];
+A --> E>user_friendly_spreadsheet.xlsx]
+C --> F>uuid.json]
+D --> G>files.extension]
+```
+
+## summary.json
+
+This is a special file, generated over export, that includes the whole experimental graph.
+
+The **purpose** of this file is to be able to combine all the metadata available in the staging area, giving a clear experimental
+graph that is associated with a project.
+
+Someone reading this document would be able to:
+
+- Start in any file (by uuid) and work out a complete experimental subgraph out of it
+- Parse the complete file and get the complete experimental graph
+
+In order to accomplish this, the `src/export_scripts/summary_json_creation.py` script has to be run alongside a path and
+a submission uuid.
+
+This file has the following structure:
+```
+{
+  metadata_uuid: {
+    derivedFrom: "uuid-derived-from"
+    derivedTo: "uuid-derived-to"
+    },
+  .
+  .
+  .
+}
+```
+
+This ensures that anyone looking at the data/metadata files can understand their provenance.
